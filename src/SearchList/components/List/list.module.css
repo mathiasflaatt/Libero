@@ -1,0 +1,17 @@
+.list {
+  margin: 0 auto auto 0;
+  max-height: calc(100vh - 5rem);
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.list li {
+  padding: 0.5rem;
+  background-color: antiquewhite;
+  margin-top: 0.5rem;
+}
+
+.list li:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+.imageWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-rows: repeat(6, calc((160 * 1.2) px));
+  gap: 1rem;
+  grid-auto-flow: dense;
+}
+
+.imageWrapper img:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.imageWrapper img:nth-child(3n) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 10px 10px 15px -7px rgba(0, 0, 0, 0.75);
+}
