@@ -1,15 +1,15 @@
-import React from "react";
-import { useIndexdDBContext } from "src/indexedDBContext";
+import React, { useState } from "react";
+import { useIndexedDBContext } from "src/indexedDBContext";
 import { List } from "src/SearchList/components/List";
 import { FavourtieTable } from "src/indexedDBContext/typedDatabase";
 import { Paper, Typography } from "@material-ui/core";
 
 export const FavouriteList = ({ onSetTarget }) => {
-  const { favourites, deleteFavourite } = useIndexdDBContext();
+  const { favourites } = useIndexedDBContext();
 
   return (
     <Paper style={{ margin: "2rem" }} variant="elevation">
-      <Typography>My </Typography>
+      <Typography>My favourties </Typography>
       <List<FavourtieTable>
         list={favourites}
         headers={[

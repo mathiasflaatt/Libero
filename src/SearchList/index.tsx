@@ -26,51 +26,47 @@ export const SearchList = () => {
   if (error) return <Error error={error} />;
   return (
     <>
-      <Container className={style.container}>
-        <Grid container spacing={3}>
-          <Grid
-            container
-            component={Paper}
-            item
-            xs={12}
-            md={6}
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <TextField
-              fullWidth
-              variant="outlined"
-              tabIndex={1}
-              type="text"
-              onChange={(e) => setSearchString(e.currentTarget.value)}
-              placeholder="Søk etter forfattere og deres verk"
-            />
-            {!loading ? (
-              <>
-                {data && (
-                  <List<Doc>
-                    headers={[
-                      { key: "title", name: "Title" },
-                      { key: "author_name", name: "Author" },
-                    ]}
-                    list={data.docs}
-                    onSetTarget={setTargetData}
-                  />
-                )}
-              </>
-            ) : (
-              <Loading className={style.loading} />
-            )}
-          </Grid>
-
-          {targetData && (
-            <Grid item xs={12} md={6} className={style.detail}>
-              <BookDetail bibKey={targetData.key} />
-            </Grid>
+      <Grid
+        className={style.container}
+        container
+        spacing={3}
+        direction="row"
+        justify="flex-start"
+        alignItems="flex-start"
+      >
+        <Grid component={Paper} item xs={12} md={6}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            tabIndex={1}
+            type="text"
+            onChange={(e) => setSearchString(e.currentTarget.value)}
+            placeholder="Søk etter forfattere og deres verk"
+          />
+          {!loading ? (
+            <>
+              {data && (
+                <List<Doc>
+                  headers={[
+                    { key: "title", name: "Title" },
+                    { key: "author_name", name: "Author" },
+                  ]}
+                  list={data.docs}
+                  onSetTarget={setTargetData}
+                />
+              )}
+            </>
+          ) : (
+            <Loading className={style.loading} />
           )}
         </Grid>
-      </Container>
+
+        {targetData && (
+          <Grid item xs={12} md={6} className={style.detail}>
+            <BookDetail bibKey={targetData.key} />
+          </Grid>
+        )}
+      </Grid>
     </>
   );
 };

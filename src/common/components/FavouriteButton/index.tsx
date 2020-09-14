@@ -1,19 +1,18 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { BookResponse } from "src/SearchList/typings/bookResponse";
 import { Doc } from "src/SearchList/typings/searchResponse";
-import { useIndexdDBContext } from "src/indexedDBContext";
+import { useIndexedDBContext } from "src/indexedDBContext";
 import style from "./favourite.module.css";
 
 export const FavouriteButton = ({ target }) => {
   const [] = useState();
   const {
-    favourites,
     isInFavourites,
     addToFavourites,
     deleteFavourite,
-  } = useIndexdDBContext();
+  } = useIndexedDBContext();
 
-  const isFavourite = isInFavourites(target.key);
+  const isFavourite = useMemo(() isInFavourites(target.key);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

@@ -9,6 +9,7 @@ export const useIndexedDB = () => {
       setFavourites(await db.favourites.toArray());
     });
   };
+
   useEffect(() => {
     if (!db.isOpen()) {
       db.open().then(readAndUpdateState);
