@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { SearchList } from "src/SearchList";
-import { FavouriteList } from "src/Favourites";
+import { FavouriteList } from "src/SearchList/components/Favourites";
 
 export default function Home() {
   return (

@@ -12,7 +12,7 @@ export const FavouriteButton = ({ target }) => {
     deleteFavourite,
   } = useIndexedDBContext();
 
-  const isFavourite = useMemo(() isInFavourites(target.key);
+  const isFavourite = isInFavourites(target.key);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

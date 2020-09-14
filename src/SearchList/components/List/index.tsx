@@ -5,7 +5,7 @@ import React, {
   PropsWithChildren,
 } from "react";
 import style from "./list.module.css";
-import { FavouriteButton } from "../../../common/components/FavouriteButton";
+import { FavouriteButton } from "../FavouriteButton";
 import {
   TableContainer,
   Paper,

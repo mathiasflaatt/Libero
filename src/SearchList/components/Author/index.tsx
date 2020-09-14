@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetch } from "src/SearchList/utils/useFetch";
-import { Loading, Error } from "src/common/components";
+import { Loading, Error } from "src/SearchList/components";
 import { AuthorResponse } from "src/SearchList/typings/authorReponse";
 import { Card, CardMedia } from "@material-ui/core";
 import style from "./author.module.css";
@@ -19,9 +19,9 @@ export const Author = ({ author, error, loading }) => {
       )}
       <h1>{author.name}</h1>
       {author.birth_date && <span>Born: {author.birth_date}</span>}
-      {author.bio && (
+      {/* {author.bio && (
         <p>{typeof author.bio === "string" ? author.bio : author.bio.value}</p>
-      )}
+      )} */}
       <ul>
         {author.links?.map((link) => {
           if (link.type.key === "/type/link") {

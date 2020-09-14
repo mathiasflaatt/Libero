@@ -1,10 +1,10 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { List } from "./components/List";
-import { BookDetail } from "../common/components/BookDetail";
+import { BookDetail } from "./components/BookDetail";
 import { useDebounce } from "./utils/useDebounce";
 import style from "./index.module.css";
 import { useFetch } from "./utils/useFetch";
-import { Loading, Error } from "src/common/components";
+import { Loading, Error } from "src/SearchList/components";
 import { SearchResponse, Doc } from "./typings/searchResponse";
 import Grid from "@material-ui/core/Grid";
 import { TextField, Paper, Container } from "@material-ui/core";
@@ -43,6 +43,7 @@ export const SearchList = () => {
             onChange={(e) => setSearchString(e.currentTarget.value)}
             placeholder="Søk etter forfattere og deres verk"
           />
+
           {!loading ? (
             <>
               {data && (

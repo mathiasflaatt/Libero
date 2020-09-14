@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { FavouriteList } from "src/Favourites";
+import { FavouriteList } from "src/SearchList/components/Favourites";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
         <title>Libero</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FavouriteList />
+      <FavouriteList onSetTarget={console.log} />
     </div>
   );
 }
