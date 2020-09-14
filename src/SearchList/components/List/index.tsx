@@ -118,7 +118,10 @@ export function List<T>({
               tabIndex={1}
             >
               {headers.map((header, i) => (
-                <TableCell {...(i === 1 ? { scope: "row" } : {})}>
+                <TableCell
+                  {...(i === 1 ? { scope: "row" } : {})}
+                  key={header.name}
+                >
                   {item[header.key]?.toString()}
                 </TableCell>
               ))}

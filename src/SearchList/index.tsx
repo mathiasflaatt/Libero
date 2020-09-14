@@ -29,6 +29,7 @@ export const SearchList = () => {
       <Container className={style.container}>
         <Grid container spacing={3}>
           <Grid
+            container
             component={Paper}
             item
             xs={12}
