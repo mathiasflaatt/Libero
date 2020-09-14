@@ -1,4 +1,5 @@
 // import App from 'next/app'
+import "styles/globals.css";
 
 import { IndexedDBContextProvider } from "src/indexedDBContext";
 

@@ -1,13 +1,3 @@
-.searchListWrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1rem;
-}
-
-.search {
-  width: calc(100% - 3rem);
-  font-size: 2rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  margin: 1rem;
+.container {
+  padding: 1rem 0;
 }

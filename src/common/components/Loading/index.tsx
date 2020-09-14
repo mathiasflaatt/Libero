@@ -1,6 +1,7 @@
 import React from "react";
 import { and } from "src/SearchList/utils/css";
 import style from "./loading.module.css";
+import { CircularProgress } from "@material-ui/core";
 
 type Loading = {
   label?: string;
@@ -13,13 +14,7 @@ export const Loading: React.FC<Loading> = ({
 }) => {
   return (
     <div className={and(className, style.loading)} {...rest}>
-      <span>{label}</span>
-      <div className={style.lds_ellipsis}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <CircularProgress disableShrink />
     </div>
   );
 };

@@ -1,11 +1,13 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { List } from "./components/List";
-import { BookDetail } from "./components/BookDetail";
+import { BookDetail } from "../common/components/BookDetail";
 import { useDebounce } from "./utils/useDebounce";
 import style from "./index.module.css";
 import { useFetch } from "./utils/useFetch";
 import { Loading, Error } from "src/common/components";
 import { SearchResponse, Doc } from "./typings/searchResponse";
+import Grid from "@material-ui/core/Grid";
+import { TextField, Paper, Container } from "@material-ui/core";
 
 type SearchList = {
   searchQuery: string;
@@ -21,86 +23,53 @@ export const SearchList = () => {
       : null
   );
 
-  useEffect(() => {
-    setTargetData(null);
-  }, [data]);
-
-  // const [{ loading, error, data }, set] = useState<{
-  //   loading: boolean;
-  //   data?: SearchPayload;
-  //   error?: string;
-  // }>({ loading: false });
-
-  // const fetchAction = useCallback(async () => {
-  //   if (!debouncedSearchQuery) return null;
-
-  //   // Abort early if no query
-  //   const response = await fetch(
-  //     `/api/search?author=${debouncedSearchQuery}&limit=20`,
-  //     {
-  //       method: "GET",
-  //     }
-  //   );
-  //   if (response.ok) {
-  //     return await response.json();
-  //   }
-  //   throw new Error(await response.json());
-  // }, [debouncedSearchQuery]);
-
-  // useEffect(() => {
-  //   let mounted = true;
-
-  //   set({ loading: true, data: null, error: null });
-  //   setTargetData(null);
-  //   fetchAction()
-  //     .then((data) => {
-  //       if (mounted) {
-  //         set({
-  //           loading: false,
-  //           data,
-  //         });
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       if (mounted) {
-  //         set({ loading: false, error });
-  //       }
-  //     });
-
-  //   return () => {
-  //     mounted = false;
-  //   };
-  // }, [fetchAction]);
-
   if (error) return <Error error={error} />;
   return (
     <>
-      <input
-        tabIndex={1}
-        className={style.search}
-        type="text"
-        onChange={(e) => setSearchString(e.currentTarget.value)}
-        placeholder="Søk etter forfattere og deres verk"
-      />
-      <div className={style.searchListWrapper}>
-        {!loading ? (
-          <>
-            {data && (
-              <div className={style.list}>
-                <List docs={data.docs} onSetTarget={setTargetData} />
-              </div>
+      <Container className={style.container}>
+        <Grid container spacing={3}>
+          <Grid
+            component={Paper}
+            item
+            xs={12}
+            md={6}
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <TextField
+              fullWidth
+              variant="outlined"
+              tabIndex={1}
+              type="text"
+              onChange={(e) => setSearchString(e.currentTarget.value)}
+              placeholder="Søk etter forfattere og deres verk"
+            />
+            {!loading ? (
+              <>
+                {data && (
+                  <List<Doc>
+                    headers={[
+                      { key: "title", name: "Title" },
+                      { key: "author_name", name: "Author" },
+                    ]}
+                    list={data.docs}
+                    onSetTarget={setTargetData}
+                  />
+                )}
+              </>
+            ) : (
+              <Loading className={style.loading} />
             )}
+          </Grid>
 
-            {targetData && (
-              <div className={style.detail}>
-                <BookDetail bibKey={targetData.key} />
-              </div>
-            )}
-          </>
-        ) : (
-          <Loading className={style.loading} />
-        )}
-      </div>
+          {targetData && (
+            <Grid item xs={12} md={6} className={style.detail}>
+              <BookDetail bibKey={targetData.key} />
+            </Grid>
+          )}
+        </Grid>
+      </Container>
     </>
   );
 };

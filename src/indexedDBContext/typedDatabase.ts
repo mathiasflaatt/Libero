@@ -1,8 +1,12 @@
 import Dexie from "dexie";
-import { BookResponse } from "src/SearchList/typings/bookResponse";
 
+export type FavourtieTable = {
+  key: string;
+  title: string;
+  author: string | string[];
+};
 class TypedDatabase extends Dexie {
-  favourites: Dexie.Table<BookResponse, string>;
+  favourites: Dexie.Table<FavourtieTable, string>;
 
   constructor() {
     super("LiberoDatabase");
